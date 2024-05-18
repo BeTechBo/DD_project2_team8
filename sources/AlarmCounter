@@ -1,0 +1,39 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 05/17/2024 11:58:06 PM
+// Design Name: 
+// Module Name: AlarmCounter
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module AlarmCounter (input clk, rst, adjust_enable_minutes, adjust_enable_hours, Up_down,output [3:0]hours_units, minuites_units, output [1:0]hours_tenth, output [2:0]minutes_tenth);
+
+wire[5:0] minutes_OUT; 
+wire[4:0] hours_OUT;
+
+
+ 
+
+counter_x_bit #(6,60) minutes_counter ( clk, rst,adjust_enable_minutes,Up_down, minutes_OUT); 
+counter_x_bit #(5,24) hours_counter ( clk, rst,  adjust_enable_hours,Up_down, hours_OUT); 
+
+assign minutes_tenth=minutes_OUT/10;
+assign minuites_units=minutes_OUT%10;
+
+
+
+endmodule
