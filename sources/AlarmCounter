@@ -34,6 +34,7 @@ counter_x_bit #(5,24) hours_counter ( clk, rst,  adjust_enable_hours,Up_down, ho
 assign minutes_tenth=minutes_OUT/10;
 assign minuites_units=minutes_OUT%10;
 
-
+assign hours_tenth=hours_OUT/10;
+assign hours_units=hours_OUT%10;
 
 endmodule
