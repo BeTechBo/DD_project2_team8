@@ -1,4 +1,4 @@
-بعدها `timescale 1ns / 1ps
+`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -194,7 +194,258 @@ always @* begin
     
  
       
-           
+      clk_min: begin
+      if (usedoutput == 5'b00100) begin 
+        nextstate = alarm_hour;
+        LD=5'b10010;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'bx;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;
+        pflag=1;
+      end 
+       else if (usedoutput == 5'b00010)begin 
+        nextstate = clk_hour;
+        LD=5'b11000;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'bx;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;
+      end
+      else if (usedoutput == 5'b00001) begin 
+        nextstate = display_clock;
+        LD=5'b00000;
+        chooser_clk=clk_out;
+        sec_en=1;
+        Up_down=1'b1;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0; 
+      end
+      else if (usedoutput == 5'b10000) begin 
+        nextstate = clk_min;
+        LD=5'b10100;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'b1;
+        min_en=1;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;
+      end
+      else if (usedoutput == 5'b01000)begin 
+        nextstate = clk_min;
+        LD=5'b10100;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'b0;
+        min_en=1;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;
+      end
+      else begin 
+        nextstate = clk_min;
+        LD=5'b10100;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'bx;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;
+      end
+      end
+      
+      
+      // CASE 3 
+      
+      alarm_hour: begin        
+      if (usedoutput == 5'b00100) begin 
+        nextstate = alarm_min;
+        LD=5'b10001;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'bx;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0; 
+        pflag=1;
+      end
+      
+       else if (usedoutput == 5'b00010) begin 
+        nextstate = clk_min;
+        LD=5'b10100;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'bx;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;
+      end
+      else if (usedoutput == 5'b00001) begin 
+        nextstate = display_clock;
+        LD=5'b00000;
+        chooser_clk=clk_out;
+        sec_en=1;
+        Up_down=1'b1;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0; 
+      end
+      else if (usedoutput == 5'b10000) begin 
+        nextstate = alarm_hour;
+        LD=5'b10010;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'b1;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=1;
+        pflag=1;
+      end
+      else if (usedoutput == 5'b01000) begin 
+        nextstate = alarm_hour;
+        LD=5'b10010;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'b0;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=1;
+        pflag=1;
+      end
+      else begin 
+        nextstate = alarm_hour;
+        LD=5'b10010;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'bx;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;
+        pflag=1;
+      end
+      end
+      
+      // CASE 4 
+          
+      alarm_min: begin 
+      if (usedoutput == 5'b00100)begin 
+        nextstate = clk_hour;
+        LD=5'b11000;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'bx;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;
+      end
+      else if (usedoutput == 5'b00010) begin 
+        nextstate = alarm_hour;
+        LD=5'b10010;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'bx;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;
+        pflag=1;
+      end
+      else if (usedoutput == 5'b00001) begin 
+        nextstate = display_clock;
+        LD=5'b00000;
+        chooser_clk=clk_out;
+        sec_en=1;
+        Up_down=1'b1;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;  
+      end
+     
+      
+      else if (usedoutput == 5'b10000)begin 
+        nextstate = alarm_min;
+        LD=5'b10001;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'b1;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=1;
+        alarm_hour_en=0;  
+        pflag=1;
+      end 
+      
+      else if (usedoutput == 5'b01000)begin
+        nextstate = alarm_min;
+        LD=5'b10001;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'b0;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=1;
+        alarm_hour_en=0;  
+        pflag=1;
+      end
+      else begin 
+        nextstate = alarm_min;
+        LD=5'b10001;
+        chooser_clk=clk_out;
+        sec_en=0;
+        Up_down=1'bx;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0; 
+        pflag=1; 
+      end
+
+      end
+      
+      
+      alarm_mode:
+      if (usedoutput != 5'b00000) begin 
+        nextstate = display_clock;
+        LD=5'b00000;
+        chooser_clk=clk_out;
+        sec_en=1;
+        Up_down=1'b1;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;  
+      end
+      
+      else begin 
+          LD = {0,0,0,0,clk_out};
+          nextstate = alarm_mode;
+          chooser_clk=clk_out;
+          sec_en=1;
+          Up_down=1'b1;
+          min_en=0;
+          hour_en=0;
+          alarm_min_en=0;
+          alarm_hour_en=0;
+      end
+      
       default: nextstate = display_clock;
 
     endcase
