@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module exp5(input clk_1, input clk200, input reset,input enable, output [3:0] anode_active ,output [6:0] segments, output reg decimal, input  C, input L,input R,input U,input D, output  reg[0:4] LD, output z_flag);
+module exp5(input clk_out, input clk_200_hz, input reset,input enable, output [3:0] anode_active ,output [6:0] segments, output reg decimal, input  C, input L,input R,input U,input D, output  reg[0:4] LD, output z_flag);
 wire [3:0] wi_4;// minuites units
 wire [2:0] wi_3;// minuites tens
 wire [3:0] wi_2;// hours units
@@ -72,6 +72,7 @@ always@(*) begin
  wire[5:0]seconds_OUT;   
 
 assign z_flag = ((wi_2 == ai_2) & (wi_4 == ai_4)& (wi_3 == ai_3)& (wi_1 == ai_1) & (seconds_OUT==0) & pflag );
+assign buzz_en = (state==alarm_mode) ? LD[0] : 0 ;
 
 
 always @* begin 
