@@ -11,12 +11,10 @@
 // Tool Versions: 
 // Description: 
 // 
-// Dependencies: 
 // 
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
 //////////////////////////////////////////////////////////////////////////////////
 module synchronizer(input clk, rst, in, output out);
 
