@@ -19,6 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+
 module debouncer(input clk, rst, in, output out);
 reg q1,q2,q3;
 always@(posedge clk, posedge rst) begin

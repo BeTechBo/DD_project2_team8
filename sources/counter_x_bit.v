@@ -19,6 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+//COUNTER
 module counter_x_bit #(parameter x = 3, n = 6)(input clk, reset,en, Up_down ,output  [x-1:0] count);
 reg [x-1:0] count;
 
