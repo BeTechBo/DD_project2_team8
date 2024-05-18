@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+بعدها `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -152,7 +152,42 @@ always @* begin
         alarm_hour_en=0;  
       end
      
-  
+      else if (usedoutput == 5'b10000)  begin 
+        nextstate = clk_hour;
+        LD=5'b11000;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'b1;
+        min_en=0;
+        hour_en=1;
+        alarm_min_en=0;
+        alarm_hour_en=0;   
+      end
+      
+      
+      else if (usedoutput == 5'b01000) begin 
+        nextstate = clk_hour;
+        LD=5'b11000;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'b0;
+        min_en=0;
+        hour_en=1;
+        alarm_min_en=0;
+        alarm_hour_en=0;  
+      end
+        
+      else begin 
+        nextstate = clk_hour;
+        LD=5'b11000;
+        chooser_clk=clk_200_hz;
+        sec_en=0;
+        Up_down=1'bx;
+        min_en=0;
+        hour_en=0;
+        alarm_min_en=0;
+        alarm_hour_en=0;  
+      end
       end 
       
   //CASE 2
@@ -225,4 +260,4 @@ AlarmCounter alarm(chooser_clk, reset, alarm_min_en, alarm_hour_en, Up_down, ai_
 counter_x_bit #(2,4) gut(.clk(clk_200_hz), .reset(reset),.en(1'b1),.Up_down(1'b1), .count(sel));
 seven_segment display(.inp1(display4),.inp2({display3}),.inp3(display2),.inp4({display1}),.enable(sel),.anode_active(anode_active),.segments(segments)); 
   
-endmodule 
+endmodule
