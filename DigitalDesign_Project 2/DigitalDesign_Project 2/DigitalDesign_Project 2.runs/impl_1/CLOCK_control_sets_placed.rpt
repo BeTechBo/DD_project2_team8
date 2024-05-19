@@ -1,0 +1,87 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Sun May 19 04:35:08 2024
+| Host         : CSE-P07-216886 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file CLOCK_control_sets_placed.rpt
+| Design       : CLOCK
+| Device       : xc7a35t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |     9 |
+|    Minimum number of control sets                        |     9 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    33 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |     9 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     3 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             129 |           52 |
+| No           | No                    | Yes                    |               2 |            2 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |              28 |           15 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++--------------------+-----------------------------------------+------------------+------------------+----------------+--------------+
+|    Clock Signal    |              Enable Signal              | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++--------------------+-----------------------------------------+------------------+------------------+----------------+--------------+
+|  clk_200_hz_BUFG   |                                         | reset_IBUF       |                2 |              2 |         1.00 |
+|  clk_200_hz_BUFG   | alarm_hour_en                           | reset_IBUF       |                2 |              5 |         2.50 |
+|  selector_clk      | clock/minutes_counter/E[0]              | reset_IBUF       |                2 |              5 |         2.50 |
+|  clk_200_hz_BUFG   | alarm_min_en                            | reset_IBUF       |                4 |              6 |         1.50 |
+|  selector_clk      | clock/seconds_counter/count_reg[1]_1[0] | reset_IBUF       |                4 |              6 |         1.50 |
+|  selector_clk      | sec_en                                  | reset_IBUF       |                3 |              6 |         2.00 |
+|  LD_reg[4]_i_2_n_0 |                                         |                  |                9 |             25 |         2.78 |
+|  clk_200_hz_BUFG   |                                         |                  |               16 |             38 |         2.38 |
+|  clk_IBUF_BUFG     |                                         |                  |               27 |             66 |         2.44 |
++--------------------+-----------------------------------------+------------------+------------------+----------------+--------------+
+
+
